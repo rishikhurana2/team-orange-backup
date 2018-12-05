@@ -40,16 +40,20 @@ class TargetDetector:
 					self.minY = 1000
 					if (i[0][0] > self.maxX):
 						self.maxX = i[0][0]
+						self.maxXReturn = self.maxX
+						print(self.maxXReturn)
 					if (i[0][0] < self.minX):
 						self.minX = i[0][0]
+						self.minXReturn = self.minX
+						print(self.minXReturn)
 					if (i[0][1] > self.maxY):
 						self.maxY = i[0][1]
+						self.maxYReturn = self.maxY
+						print(self.maxYReturn)
 					if (i[0][1] < self.minY):
 						self.minY = i[0][1]
-					self.maxXReturn = self.maxX
-					self.minXReturn = self.minX
-					self.maxYReturn = self.maxY
-					self.minYReturn = self.minY
+						self.minYReturn = self.minY
+						print(self.minYReturn)
 		self.contr = self.origImg
 	def getTargetApprox(self):
 		return self.targetApprox

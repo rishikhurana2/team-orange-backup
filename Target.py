@@ -14,12 +14,12 @@ class Target:
 		self.centerY = 0
 		self.shape = "Nothing"
 		self.detector = TargetDetector()
-	def getWidth(self, minX, maxX): 
+	def getWidth(self, maxX, minX): 
 		self.minX = minX
 		self.maxX = maxX
 		self.width = self.maxX - self.minX
 		return self.width
-	def getHeight(self, minY, maxY):
+	def getHeight(self, maxY, minY):
 		self.minY = minY
 		self.maxY = maxY
 		self.height = self.maxY - self.minY
