@@ -10,13 +10,13 @@ class TargetDetector:
 		self.targetApprox = np.zeros((0,0,0))
 		self.approx = None
 		self.maxX = 0
-		self.minX = 0
+		self.minX = 1000
 		self.maxY = 0
-		self.minY = 0
+		self.minY = 1000
 		self.maxXReturn = 0
-		self.minXReturn = 0
+		self.minXReturn = 1000
 		self.maxYReturn = 0
-		self.minYReturn = 0
+		self.minYReturn = 1000
 	def threshold(self, originalImage):
 		self.origImg = originalImage
 		self.HSV = cv2.cvtColor(self.origImg, cv2.COLOR_BGR2HSV)
@@ -33,36 +33,30 @@ class TargetDetector:
 			if (len(self.approx) >= 4 and area > 1000):
 				self.targetApprox = self.approx
 				cv2.drawContours(self.origImg, contours, count, (255,10,255), 5)
+				self.maxX = 0
+				self.minX = 1000
+				self.maxY = 0
+				self.minY = 1000
 				for i in self.approx:
-					self.maxX = 0
-					self.minX = 1000
-					self.maxY = 0
-					self.minY = 1000
 					if (i[0][0] > self.maxX):
 						self.maxX = i[0][0]
-						self.maxXReturn = self.maxX
-						print(self.maxXReturn)
 					if (i[0][0] < self.minX):
 						self.minX = i[0][0]
-						self.minXReturn = self.minX
-						print(self.minXReturn)
 					if (i[0][1] > self.maxY):
 						self.maxY = i[0][1]
-						self.maxYReturn = self.maxY
-						print(self.maxYReturn)
 					if (i[0][1] < self.minY):
 						self.minY = i[0][1]
-						self.minYReturn = self.minY
-						print(self.minYReturn)
+				self.maxXReturn = self.maxX
+				self.maxYReturn = self.maxY
+				self.minXReturn = self.minX
+				self.minYReturn = self.minY
 		self.contr = self.origImg
 	def getTargetApprox(self):
 		return self.targetApprox
 	def getApprox(self):
 		return self.approx
-	def getXExtrema(self):
-		return self.maxXReturn, self.minXReturn
-	def	getYExtrema(self):
-		return self.maxYReturn, self.minYReturn
+	def getExtrema(self):
+		return self.maxXReturn, self.minXReturn, self.maxYReturn, self.minYReturn
 	def getContour(self):
 		return self.contr
 	def getHSV(self):
