@@ -9,8 +9,8 @@ class TargetProcessor:
 		self.realPlusWidth = 6.5
 		self.focalLength = 700
 	def calculate(self, width, height, centerX, centerY, frame, shape):
-		xOffset = centerX - frame.shape[0]/2
-		yOffset = centerY - frame.shape[1]/2		
+		xOffset = frame.shape[0]/2 - centerX
+		yOffset = frame.shape[1]/2 - centerY		
 		if (shape == "Rectangle"):
 			self.dist = (self.focalLength * self.realRectWidth)/width
 		if (shape == "Cross"):
