@@ -30,9 +30,9 @@ class TargetDetector:
 			count = count + 1
 			self.approx = cv2.approxPolyDP(cont, 0.1 * cv2.arcLength(cont, True), True)
 			area = cv2.contourArea(self.approx)
-			if (len(self.approx) >= 4 and area > 1000):
-				self.targetApprox = self.approx
+			if (len(self.approx) >= 4 and area > 4000):
 				cv2.drawContours(self.origImg, contours, count, (255,10,255), 5)
+				self.targetApprox = self.approx
 				self.maxX = 0
 				self.minX = 1000
 				self.maxY = 0

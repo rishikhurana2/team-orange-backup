@@ -29,10 +29,9 @@ class Target:
 		self.centerY = (self.maxY + self.minY)/2
 		return self.centerX, self.centerY
 	def getShape(self, targetApprox):
-		if (len(targetApprox) > 0):
-			if (len(targetApprox) == 4):
-				self.shape = "Rectangle"
-			if (len(targetApprox) == 12):
-				self.shape = "Cross"
+		if (len(targetApprox) == 4):
+			self.shape = "Rectangle"
+		if (len(targetApprox) == 12):
+			self.shape = "Cross"
 		return self.shape
 			
